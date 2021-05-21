@@ -8,17 +8,25 @@
     <script src="https://raw.githack.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
     <script src="https://raw.githack.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
     <script>
+	    const pipe = document.querySelector('#pipe');
+	    const Building = document.querySelector('#Building');
         THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
+	    function Down() {
+    pipe.walker.object3D.position.Y+=-1;
+}
     </script>
 </head>
 
 <body style='margin: 0; overflow: hidden;'>
+	<div align="center">
+<button onclick="Down()">아래</button>
+</div>
     <a-scene
         vr-mode-ui="enabled: false"
 		embedded
         arjs='sourceType: webcam; sourceWidth:1280; sourceHeight:960; displayWidth: 1280; displayHeight: 960; debugUIEnabled: false;'>
-        <a-entity gltf-model="./pipe.glb" rotation="0 180 0" scale="1 1 1" gps-entity-place="latitude: 36.42283659; longitude: 127.40639148;"/>
-	    <a-entity gltf-model="./Building.glb" rotation="0 180 0" scale="1 1 1" gps-entity-place="latitude: 36.42283659; longitude: 127.40639148;"/>
+        <a-entity id="pipe" gltf-model="./pipe.glb" rotation="0 180 0" scale="1 1 1" gps-entity-place="latitude: 36.42283659; longitude: 127.40639148;"/>
+	    <a-entity id="Building" gltf-model="./Building.glb" rotation="0 180 0" scale="1 1 1" gps-entity-place="latitude: 36.42283659; longitude: 127.40639148;"/>
         <a-camera gps-camera rotation-reader></a-camera>
 	</a-scene>
 </body>
